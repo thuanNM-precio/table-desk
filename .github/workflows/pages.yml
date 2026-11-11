@@ -26,6 +26,8 @@ jobs:
       - run: npm ci
       # Base path must match the repository name: https://<user>.github.io/table-desk/
       - run: npm run build:pages
+      # Pages has no SPA rewrites: serve the app for deep links such as /table-desk/menu
+      - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
